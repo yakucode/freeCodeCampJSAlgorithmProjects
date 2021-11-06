@@ -46,11 +46,10 @@ function checkCashRegister(price, cash, cid) {
 		//while (changeSum >= currencies[curType] && curTypeAmount >= changeSum)
 		while (changeSum >= currencies[curType] && curTypeAmount != 0) {
 			amountCoinsBills += currencies[curType];
-			//console.log(amountCoinsBills);
+
 			curTypeAmount -= currencies[curType];
 			changeSum -= currencies[curType];
 			cidAmountRounded -= currencies[curType];
-			//console.log('success ' + curType);
 		}
 		cidFinalRounded = Math.round((cidAmountRounded + Number.EPSILON) * 100) / 100;
 		//push only those coins/bills that are used
@@ -58,7 +57,6 @@ function checkCashRegister(price, cash, cid) {
 			change.push([ curType, amountCoinsBills / 100 ]);
 		}
 	}
-	//console.log(cidFinalRounded);
 
 	if (changeSum != 0) {
 		return { status: 'INSUFFICIENT_FUNDS', change: [] };
